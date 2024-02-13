@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import AdoptAPet from "../assets/AdoptAPet/AdoptAPet";
 
 const Datos = () => {
   const [dataApi, setDataApi] = useState();
@@ -15,11 +16,14 @@ const Datos = () => {
 
   return (
     <>
-      <h2>Apis info</h2>
+
+      <AdoptAPet apis={dataApi}/>
+      <h1>Apis info</h1>
       <div>
       {
         dataApi?.entries?.map((API)=>{
          return(
+
           <ul >
           <h3>{API.API}</h3>
          <li>categoria: {API.Category}</li>
@@ -37,4 +41,4 @@ const Datos = () => {
 };
 
 export default Datos;
-//CREAR UN CMPONNTE QUE MUETSRE LA LISTA POR PROPS
+//CREAR UN CMPONNTE QUE MUETSRE LA LISTA POR PROPS pero solo de AdoptAPèt
