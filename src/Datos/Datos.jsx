@@ -20,11 +20,11 @@ const Datos = () => {
       {
         dataApi?.entries?.map((API)=>{
          return(
-          <ul key={API.AdoptAPet}>
-          <li key={API}>{API.AdoptAPet}</li>
-         <li>{API.category}</li>
-         <li>{API.description}</li>
-         <li>{API.link}</li>
+          <ul >
+          <h3>{API.API}</h3>
+         <li>categoria: {API.Category}</li>
+         <li>descripción: {API.Description}</li>
+         <a href="">{API.Link}</a>
         </ul>
          )
 
@@ -37,3 +37,4 @@ const Datos = () => {
 };
 
 export default Datos;
+//CREAR UN CMPONNTE QUE MUETSRE LA LISTA POR PROPS
