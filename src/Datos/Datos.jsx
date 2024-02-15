@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import AdoptAPet from "../assets/AdoptAPet/AdoptAPet";
 
 const Datos = () => {
   const [dataApi, setDataApi] = useState();
@@ -17,7 +16,6 @@ const Datos = () => {
   return (
     <>
 
-      <AdoptAPet apis={dataApi}/>
       <h1>Apis info</h1>
       <div>
       {
