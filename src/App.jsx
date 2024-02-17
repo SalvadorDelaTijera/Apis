@@ -1,20 +1,39 @@
 import React from 'react'
 import Datos from './Datos/Datos'
+import Profile from './Profile/Profile'
 import { useState, useEffect } from 'react';
 
-const App = () => {
-const [dataRandom, setDataRandom] = useState();
 
+const App = () => {
+const [dataRandom, setDataRandom] = useState();//?---------------api personas random-------------------------
+const [dataProfile, setDataProfile] = useState();
+
+
+//?---------------api personas random-------------------------
 const random = async()=>{
   let res = await fetch('https://randomuser.me/api/')
   res = await res.json();
   setDataRandom(res);
 }
-
 useEffect(()=>{
   random();
-  }, [])
-  console.log(dataRandom)
+  }, []);
+  //console.log(dataRandom)
+
+//?---------------api personas random-------------------------
+
+//-----------------api rick & morthy--------------------------
+  const perfil =async()=>{
+    let resp =await fetch('https://rickandmortyapi.com/api/character/1,2');
+    resp = await resp.json();
+    setDataProfile(resp);
+  }
+
+  useEffect(()=>{
+    perfil();
+  },[]);
+  console.log(dataProfile);
+
 
   return (
   <>
@@ -22,24 +41,36 @@ useEffect(()=>{
       {
         dataRandom?.results?.map((Info)=>{
           return(
-            <div>
-              <div>
-              <img src={Info.picture.medium} alt="" />
-              </div>
-            <ul>
-              <h4>name: {Info.name.first} {Info.name.last}</h4>
-              <li>email: {Info.email}</li>
-              <li>cell: {Info.cell}</li>
-              <li>phone: {Info.phone}</li>
-               <li>gender: {Info.gender}</li>
-               <li>age: {Info.dob.age}</li>
-
-            </ul>
-          </div>
+              <Datos
+              foto={Info.picture.medium}
+               name={Info.name.first} last={Info.name.last} 
+               mail={Info.email}
+               cel={Info.cell}
+               tel={Info.phone}
+               gene={Info.gender}
+               edad={Info.dob.age}
+               />
+          )
+        })
+      }
+      <br /><hr /><hr /><br />
+      
+      {
+        dataProfile?.map((info2)=>{
+          return(
+            <Profile
+            imagen ={info2.image}
+            id ={info2.id}
+            nombre={info2.name}
+            origen={info2.origin.name}
+            especie={info2.species}
+            status={info2.status}
+            />
 
           )
-
+      
         })
+
       }
   </>
   )

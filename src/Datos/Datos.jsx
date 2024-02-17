@@ -1,13 +1,15 @@
-import App from "../App";
 
-const Datos = (nom, ape, mail, cel, tel, gene, edad) => {
+const Datos = ({name, last, mail, cel, tel, gene, edad, foto}) => {
 
 
   return (
     <>
 
       <div>
-        <h3>Name: {nom}</h3>
+        <div>
+          <img src={foto} alt=''/>
+        </div>
+        <h3> {name} {last}</h3>
         <p>Email: {mail} </p>
         <p>Cel number: {cel}</p>
         <p>Phone Number: {tel}</p>
